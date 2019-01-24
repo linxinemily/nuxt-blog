@@ -2,9 +2,10 @@
   <div class="admin-page">
     <div class="new-post">
       <button @click="$router.push('/admin/newPost')">Create Post</button>
+      <button @click="logout">Log out</button>
     </div>
     <section class="existing-posts">
-      <h1>Existing Posts{{$store.state.token}}111</h1>
+      <!-- <h1>Existing Posts{{$store.state.token}}111</h1> -->
       <post-list :posts="loadedPosts" isAdmin/>
     </section>
   </div>
@@ -12,12 +13,16 @@
 
 <script>
 export default {
+  middleware: ['check-auth','log'],
   computed: {
     loadedPosts() {
       return this.$store.getters.loadedPosts
-    },
-    token () {
-      return this.$store.getters.token
+    }
+  },
+  methods: {
+    logout() {
+      this.$store.dispatch('logout')
+      this.$router.push('/admin/auth')
     }
   }
 }

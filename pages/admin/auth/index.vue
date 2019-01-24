@@ -35,15 +35,14 @@ export default {
   ]),
   methods: {
     onSubmit() {
-      this.$store.commit('increment')
-      // this.$store.dispatch('authenticateUser', {
-      //   isLogin: this.isLogin,
-      //   email: this.email,
-      //   password: this.password
-      // })
-      // .then(() => {
-      //  this.$router.push('/admin')
-      // })
+      this.$store.dispatch('authenticateUser', {
+        isLogin: this.isLogin,
+        email: this.email,
+        password: this.password
+      })
+      .then(() => {
+       this.$router.push('/admin')
+      })
     }
   }
 }
