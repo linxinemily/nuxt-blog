@@ -81,19 +81,18 @@ const createStore = () => {
       initAuth(vuexContext, req) {
         let token
         let expirationDate
-        console.log(req)
         if(req) {
-          if(!req.headers.Cookie) {
+          if(!req.headers.cookie) {
             return
           }
-          const jwtCookie = req.headers.Cookie
+          const jwtCookie = req.headers.cookie
             .split(";")
             .find(e => e.trim().startsWith("jwt="))
           if(!jwtCookie) {
             return
           }
             token = jwtCookie.split("=")[1]
-            expirationDate = req.headers.Cookie
+            expirationDate = req.headers.cookie
             .split(";")
             .find(e => e.trim().startsWith("expirationDate="))
             .split("=")[1]
@@ -106,6 +105,7 @@ const createStore = () => {
           vuexContext.dispatch('logout')
           return
         }
+        console.log('ssss'+token)
         vuexContext.commit('setToken', token)
       },
       logout(vuexContext) {
