@@ -8,7 +8,8 @@
     "dev": "nuxt",
     "build": "nuxt build",
     "start": "nuxt start",
-    "generate": "nuxt generate"
+    "generate": "nuxt generate",
+    "heroku-postbuild": "npm run build"
   },
   "dependencies": {
     "axios": "^0.18.0",
@@ -16,7 +17,7 @@
     "bootstrap-vue": "^2.0.0-beta",
     "cross-env": "^5.2.0",
     "js-cookie": "^2.2.0",
-    "nuxt": "^2.0.0"
+    "nuxt": "^2.4.3"
   },
   "devDependencies": {
     "nodemon": "^1.11.0"
